@@ -10,6 +10,9 @@ class NavRailState extends State<NavRailWidget> {
   bool showLeading = false;
   bool showTrailing = false;
   double groupAligment = -1.0;
+
+  late Image landingImage;
+
   List<Widget> pages = [
     const HomePageWidget(title: ' '),
     const ProjectsPageWidget(title: ' '),
@@ -17,6 +20,18 @@ class NavRailState extends State<NavRailWidget> {
   ];
 
   Widget selectedPage = const HomePageWidget(title: ' ');
+
+  @override
+  void initState() {
+    landingImage = Image.asset("landing.jpg");
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImage(landingImage.image, context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
